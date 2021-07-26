@@ -1,9 +1,11 @@
 const router = require("express").Router();
 const Transaction = require("../models/transaction.js");
+const {addToStore} = require("../public/indexedDb");
 
 router.post("/api/transaction", ({body}, res) => {
   Transaction.create(body)
     .then(dbTransaction => {
+      addToStore(dbTransaction);
       res.json(dbTransaction);
     })
     .catch(err => {
