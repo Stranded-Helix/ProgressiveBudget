@@ -1,5 +1,4 @@
 let db;
-let budgetVersion;
 
 const request = indexedDB.open('BudgetDB', 4);
 
